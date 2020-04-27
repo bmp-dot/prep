@@ -1,0 +1,20 @@
+#cloud-config
+
+hostname: CentOS-@@{calm_unique}@@
+fqdn: 
+manage_etc_hosts: true
+
+
+ssh_pwauth: True
+users:
+  - name: "@@{local.username}@@"
+    groups: sudo
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: "@@{local.secret}@@"
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    
+chpasswd:
+ list: |
+   @@{local.username}@@:@@{local.secret}@@
+ expire: False
