@@ -9,7 +9,7 @@ sudo systemctl stop firewalld || true
 sudo systemctl disable firewalld || true
 sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 sudo yum update -y
-sudo yum install -y nginx php56w-fpm php56w-cli php56w-mcrypt php56w-mysql php56w-mbstring php56w-dom git unzip
+sudo yum install -y nginx php56w-fpm php56w-cli php56w-mcrypt php56w-mysql php56w-mbstring php56w-dom git unzip wget
 
 sudo mkdir -p /var/www/laravel
 echo "server {
@@ -42,4 +42,5 @@ sudo systemctl enable nginx
 sudo systemctl restart php-fpm
 sudo chown -R nginx:nginx /var/www/laravel
 sudo chmod -R 777 /var/www/laravel/
+sudo wget -O /var/www/laravel/index.html https://raw.githubusercontent.com/bmp-ntnx/prep/master/index.html
 sudo systemctl restart nginx
